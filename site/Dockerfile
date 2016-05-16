@@ -8,16 +8,19 @@ ADD ./site.cabal /opt/site/site.cabal
 RUN cd /opt/site && cabal install --only-dependencies
 
 ADD ./src /opt/site/src
-ADD ./static /opt/src/static
+ADD ./static /opt/site/static
 
 # Init logging directories
 RUN mkdir /opt/site/log
 
 # Build the Project
 
-RUN cd /opt/src/static && \
+RUN npm install jspm -g
+RUN npm install gulp -g
+
+RUN cd /opt/site/static && \
 	npm install && \
-	jspm install -y \
+	jspm install -y && \
 	gulp build
 
 RUN cd /opt/site && cabal build
