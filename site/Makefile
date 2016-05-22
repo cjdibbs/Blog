@@ -12,17 +12,6 @@ endif
 
 .PHONY: ci install dep configure build test run doc clean depclean
 
-install:
-	cabal install \
-	  --enable-documentation \
-	  --enable-tests \
-	  --global \
-	  --ignore-sandbox \
-	  --haddock-hyperlink-source \
-	  --prefix=$(PREFIX) \
-	  --reorder-goals \
-	  --run-tests
-
 $(DEP): $(PKG_DESCRIPTION)
 	[ -e $(DEP) ] || ( cabal sandbox init )
 	cabal install \
@@ -39,20 +28,27 @@ $(CONFIGURE): $(DEP)
 
 configure: $(CONFIGURE)
 
-build: $(CONFIGURE)
+build: $(CONFIGURE) static/src/* static/styles/*
 	cabal build
+	cd static && \
+	npm install && \
+	jspm install && \
+	gulp build
 
 test: $(CONFIGURE)
 	cabal test --show-details=streaming
 
-run: $(CONFIGURE)
-	cabal run
+run: $(CONFIGURE) build
+	cd static && \
+	gulp watch &
+	./dist/build/site/site
 
 doc: $(CONFIGURE)
 	cabal haddock --hyperlink-source
 
 clean:
 	rm -rf dist
+	rm -rf static/dist
 
 depclean:
 	rm -rf .cabal-sandbox cabal.sandbox.config dist
