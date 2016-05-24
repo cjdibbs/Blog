@@ -1,5 +1,5 @@
 # https://github.com/darinmorrison/docker-haskell/tree/docker-library
-FROM cjdibbs/haskell-node
+FROM haskell:latest
 
 RUN cabal update
 
@@ -14,14 +14,6 @@ ADD ./static /opt/site/static
 RUN mkdir /opt/site/log
 
 # Build the Project
-
-RUN npm install jspm -g
-RUN npm install gulp -g
-
-RUN cd /opt/site/static && \
-	npm install && \
-	jspm install -y && \
-	gulp build
 
 RUN cd /opt/site && cabal build
 

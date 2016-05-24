@@ -52,3 +52,8 @@ clean:
 
 depclean:
 	rm -rf .cabal-sandbox cabal.sandbox.config dist
+
+docker: build
+	eval $(docker-machine env machine)
+	rm -rf static/npm_package
+	docker build -t blog .
