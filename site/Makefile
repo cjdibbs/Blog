@@ -32,7 +32,7 @@ build: $(CONFIGURE) static/src/* static/styles/*
 	cabal build
 	cd static && \
 	npm install && \
-	jspm install && \
+	jspm install -y && \
 	gulp build
 
 test: $(CONFIGURE)
