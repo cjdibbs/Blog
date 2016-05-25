@@ -28,7 +28,7 @@ $(CONFIGURE): $(DEP)
 
 configure: $(CONFIGURE)
 
-build: $(CONFIGURE) static/src/* static/styles/*
+build: $(CONFIGURE) static/src/* static/styles/* dist
 	cabal build
 	cd static && \
 	npm install && \
@@ -55,5 +55,11 @@ depclean:
 
 docker: build
 	eval `docker-machine env machine` && \
-	rm -rf static/npm_package && \
-	docker build -t blog . 
+	rm -rf static/node_modules dist && \
+	docker build -t blog . && \
+	docker run --name blag -t -p 80:80 blog
+
+clean-docker: 
+	eval `docker-machine env machine` && \
+	docker stop blag && \
+        docker rm blag
