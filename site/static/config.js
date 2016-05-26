@@ -29,7 +29,7 @@ System.config({
     "aurelia-templating-router": "npm:aurelia-templating-router@1.0.0-beta.1.2.1",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "fetch": "github:github/fetch@0.11.1",
-    "font-awesome": "npm:font-awesome@4.6.1",
+    "font-awesome": "npm:font-awesome@4.6.3",
     "jquery": "npm:jquery@2.2.3",
     "text": "github:systemjs/plugin-text@0.0.3",
     "github:twbs/bootstrap@3.3.6": {
@@ -156,8 +156,8 @@ System.config({
       "aurelia-path": "npm:aurelia-path@1.0.0-beta.1.2.2",
       "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.2.1"
     },
-    "npm:font-awesome@4.6.1": {
-      "css": "github:systemjs/plugin-css@0.1.21"
+    "npm:font-awesome@4.6.3": {
+      "css": "github:systemjs/plugin-css@0.1.22"
     }
   }
 });
