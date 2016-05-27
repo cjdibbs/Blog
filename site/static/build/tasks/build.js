@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var sass = require('gulp-sass');
 var runSequence = require('run-sequence');
 var changed = require('gulp-changed');
 var plumber = require('gulp-plumber');
@@ -32,11 +33,15 @@ gulp.task('build-html', function() {
     .pipe(gulp.dest(paths.output));
 });
 
-// copies changed css files to the output directory
-gulp.task('build-css', function() {
-  return gulp.src(paths.css)
-    .pipe(changed(paths.output, {extension: '.css'}))
-    .pipe(gulp.dest(paths.output));
+// compiles sass to css with sourcemaps
+gulp.task('build-css', function () {
+    return gulp.src(paths.style)
+      .pipe(plumber())
+      .pipe(changed(paths.style, { extension: '.css' }))
+      .pipe(sourcemaps.init())
+      .pipe(sass({ includePaths: ['./jspm_packages/github/twbs/bootstrap-sass@3.3.6/assets/stylesheets'] }))
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest(paths.output + '/styles'));
 });
 
 // this task calls the clean task (located

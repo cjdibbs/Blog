@@ -55,9 +55,8 @@ depclean:
 
 docker: build
 	eval `docker-machine env machine` && \
-	rm -rf static/node_modules dist && \
 	docker build -t blog . && \
-	docker run --name blag -t -p 80:80 blog
+	docker run --name blag -t -p 80:80 blog &
 
 clean-docker: 
 	eval `docker-machine env machine` && \
