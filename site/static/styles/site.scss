@@ -6,51 +6,86 @@
 @import "bootstrap";
 @import "mixins";
 
+@mixin shadow(){
+  box-shadow: 5px 5px 20px #888888;
+}
+
+html, body, .container-main {
+  height: 100%;
+}
+
 body {
   margin: 0;
+  background-color: $gray-lighter;
+}
+
+.container-main {
+  background-color: white;
+  @include shadow();
 }
 
 .splash {
   text-align: center;
-  margin: 10% 0 0 0;
+  margin: 10%;
+  padding: 20px;
   box-sizing: border-box;
+  background-color: white;
+  border-radius: 6px;
+  
+  @include shadow();
+  
+  .message {
+    font-size: 72px;
+    line-height: 72px;
+    text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .fa-spinner {
+        text-align: center;
+        display: inline-block;
+        font-size: 72px;
+        margin-top: 50px;
+    }
 }
 
-.splash .message {
-  font-size: 72px;
-  line-height: 72px;
-  text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
-  text-transform: uppercase;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.splash .fa-spinner {
-  text-align: center;
-  display: inline-block;
-  font-size: 72px;
-  margin-top: 50px;
-}
-
-.page-host {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50px;
-  bottom: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-@media print {
-  .page-host {
-    position: absolute;
-    left: 10px;
-    right: 0;
-    top: 50px;
-    bottom: 0;
-    overflow-y: inherit;
-    overflow-x: inherit;
+@media (min-width: 992px) {
+  .navbar-collapse {
+    height: auto;
+    border-top: 0;
+    box-shadow: none;
+    max-height: none;
+    padding-left:0;
+    padding-right:0;
   }
+  .navbar-collapse.collapse {
+    display: block !important;
+    width: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .navbar-collapse.in {
+    overflow-x: visible;
+  }
+
+.navbar
+{
+	max-width:300px;
+	margin-right: 0;
+	margin-left: 0;
+}	
+
+.navbar-nav,
+.navbar-nav > li,
+.navbar-left,
+.navbar-right,
+.navbar-header
+{float:none !important;}
+
+.navbar-right .dropdown-menu {left:0;right:auto;}
+.navbar-collapse .navbar-nav.navbar-right:last-child {
+    margin-right: 0;
+}
 }
 
 section {

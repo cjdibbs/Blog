@@ -30,7 +30,7 @@ System.config({
     "bootstrap-sass": "github:twbs/bootstrap-sass@3.3.6",
     "fetch": "github:github/fetch@0.11.1",
     "font-awesome": "npm:font-awesome@4.6.3",
-    "jquery": "npm:jquery@2.2.3",
+    "jquery": "npm:jquery@2.2.4",
     "text": "github:systemjs/plugin-text@0.0.3",
     "npm:aurelia-animator-css@1.0.0-beta.1.2.1": {
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.1",
