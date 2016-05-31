@@ -1,0 +1,3 @@
+[submodule "site/posts"]
+	path = site/posts
+	url = git@github.com:cjdibbs/Blog-Content.git
