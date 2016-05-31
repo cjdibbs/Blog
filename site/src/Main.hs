@@ -7,7 +7,7 @@ import Snap.Http.Server
 import Data.ByteString
 import Data.ByteString.UTF8 (toString)
 import Control.Applicative
-import Post (getSummereies)
+import Post (getSummereies, getBody)
 import Data.Aeson (encode)
 import Control.Monad.IO.Class (liftIO)
 
@@ -41,4 +41,6 @@ respondWithSummeries = do
 respondWithPost :: Maybe ByteString -> Maybe ByteString -> Snap ()
 respondWithPost _       Nothing = failWith404
 respondWithPost Nothing _       = failWith404
-respondWithPost (Just d)  (Just t)  = sendFile ("posts/" ++ (toString d) ++ " - " ++ (toString t) ++ ".json")
+respondWithPost (Just d)  (Just t)  = do
+    body <- liftIO $ getBody ((toString d) ++ "-" ++ (toString t) ++ ".json")
+    maybe failWith404 (writeLBS . encode) body
