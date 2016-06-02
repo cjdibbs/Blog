@@ -1,0 +1,7 @@
+<template>
+    <div repeat.for="post of app.posts" class="post-summary">
+        <div class="title">${post.title}</div>
+        <p class="summary" if.bind="post.summary">${post.summary}</p>
+        <p class="problem" if.bind="post.problem">${post.problem}</p>        
+    </div>
+</template>

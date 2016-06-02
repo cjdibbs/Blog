@@ -1,4 +1,4 @@
-<template bindable="router">
+<template bindable="router, posts">
   
   <nav class="navbar navbar-default" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -17,6 +17,10 @@
       <ul class="nav navbar-nav">
           <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
             <a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in" href.bind="row.href">${row.title}</a>
+          </li>
+          
+          <li class="post-link" repeat.for="post of posts">
+            <a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in" href="#post/${post.date}/${post.title}">${post.title}</a>
           </li>
         </ul>
     </div>

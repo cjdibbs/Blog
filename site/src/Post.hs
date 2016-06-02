@@ -5,7 +5,6 @@ module Post where
 
 import Data.Aeson 
 import GHC.Generics
---import Data.Text
 import Data.Text.Lazy (Text, pack)
 import qualified Data.ByteString.Lazy as B
 import System.Directory
