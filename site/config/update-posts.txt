@@ -1,0 +1,1 @@
+* * * * * /bin/sh -c 'cd /opt/site/posts && /usr/bin/git pull -q origin master'
