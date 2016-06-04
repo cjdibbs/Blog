@@ -4,7 +4,7 @@ import {HttpClient} from 'aurelia-fetch-client';
 export class Post {
     tags : string[];
     summary : string;
-    title : string;
+    _title : string;
     date : string;
     problem :string;
     _body : string;
@@ -19,7 +19,7 @@ export class Post {
         this.summary = datum.summary;
         this.problem = datum.problem;
         this.date = datum.date;
-        this.title = datum.title;
+        this._title = datum.title;
         this._body = null;
         this.client = client;
     }
@@ -32,7 +32,7 @@ export class Post {
     @computedFrom('_body')
     get body() : string {
         if(this._body == null){
-            this.client.fetch(`posts/${this.date}/${this.title}`)
+            this.client.fetch(`posts/${this.date}/${this._title}`)
                 .then(r => r.text())
                 .then(html => {
                     this._body = html
@@ -40,5 +40,10 @@ export class Post {
         }
         
         return this._body;
+    }
+    
+    @computedFrom('_title')
+    get title() : string {
+        return this._title.replace("_", " ");
     }
 }

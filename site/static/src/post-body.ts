@@ -12,13 +12,4 @@ export class PostBody {
     constructor(element){
         this.element = element;
     }
-    
-    attached(){
-        var self = this;
-        setTimeout(function() {
-            jQuery(self.element).find('pre code').each(function(i, block) {
-                hljs.highlightBlock(block);
-            });
-        }, 500);
-    }
 }

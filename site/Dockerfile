@@ -8,7 +8,6 @@ ADD ./site.cabal /opt/site/site.cabal
 RUN cd /opt/site && cabal install --only-dependencies
 
 ADD ./src /opt/site/src
-ADD ./static /opt/site/static
 
 # Init logging directories
 RUN mkdir /opt/site/log
@@ -24,6 +23,8 @@ ADD config /config
 #start up
 ADD ./start-up.sh /opt/site/start-up.sh
 RUN chmod a+x /opt/site/start-up.sh
+
+ADD ./static /opt/site/static
 
 # The directory CMD works from
 CMD "/opt/site/start-up.sh"
