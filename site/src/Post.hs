@@ -24,22 +24,8 @@ instance ToJSON Summary
 
 instance FromJSON Summary
 
-data Body = Body {
-    body :: [Text]
-} deriving (Generic, Show)
-
-instance ToJSON Body
-
-instance FromJSON Body
-
-
 postsDir :: String
 postsDir = "posts/"
-
-getBody :: FilePath -> IO(Maybe Body)
-getBody file = do
-    c <- B.readFile ( postsDir ++ file )
-    return $ decode c
 
 getSummery :: FilePath -> IO(Maybe Summary)
 getSummery file = do

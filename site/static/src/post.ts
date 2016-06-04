@@ -7,7 +7,7 @@ export class Post {
     title : string;
     date : string;
     problem :string;
-    _body :string;
+    _body : string;
     client : HttpClient;
     
     /**
@@ -33,9 +33,9 @@ export class Post {
     get body() : string {
         if(this._body == null){
             this.client.fetch(`posts/${this.date}/${this.title}`)
-                .then(r => r.json())
-                .then(datum => {
-                    this._body = datum.body
+                .then(r => r.text())
+                .then(html => {
+                    this._body = html
                 });
         }
         

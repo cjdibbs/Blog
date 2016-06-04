@@ -1,10 +1,11 @@
 <template>
+    <require from="post-body"></require>
     <h3>${post.title}</h3>
     <div if.bind="post.tags" class="tags">
         <span repeat.for="tag of post.tags">${tag}</span>
     </div>
     <p class="problem">${post.problem}</p>
     
-    <p repeat.for="html of post.body" innerHtml.bind="html"></p>
+    <post-body body.bind="post.body"></post-body>
         
 </template>
