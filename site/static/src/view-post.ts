@@ -25,6 +25,10 @@ export class ViewPost {
         this.subscription = this.bindingEngine
             .propertyObserver(this.post, 'body')
             .subscribe(this.updateBody);
+            
+        if(this.post.body){
+            this.updateBody(this.post.body);
+        }
     }
     
     attached(){
