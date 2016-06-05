@@ -15,7 +15,7 @@ RUN mkdir /opt/site/log
 # Build the Project
 RUN cd /opt/site && cabal build
 
-RUN apt-get update && apt-get install -y git cron
+RUN apt-get update && apt-get install -y git
 
 # Add our crontab file
 ADD config /config

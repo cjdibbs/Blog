@@ -26,10 +26,7 @@ module.exports = {
         "aurelia-templating-router",
         "aurelia-loader-default",
         "aurelia-history-browser",
-        "aurelia-logging-console",
-        "bootstrap",
-        "bootstrap/css/bootstrap.css!text",
-        "jquery"
+        "aurelia-logging-console"
       ],
       "options": {
         "inject": true,

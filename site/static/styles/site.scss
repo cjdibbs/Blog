@@ -10,9 +10,12 @@
   box-shadow: 5px 5px 20px #888888;
 }
 
-html, body, .container-main {
+html, body,  {
+  margin: 0;
+  padding: 0;
   height: 100%;
 }
+
 
 body {
   margin: 0;
@@ -22,6 +25,8 @@ body {
 .container-main {
   background-color: white;
   @include shadow();
+  height: auto !important; /* real browsers */
+  min-height: 100%;
 }
 
 .splash {

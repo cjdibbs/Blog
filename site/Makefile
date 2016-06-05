@@ -28,17 +28,24 @@ $(CONFIGURE): $(DEP)
 
 configure: $(CONFIGURE)
 
-build: $(CONFIGURE) static/src/* static/styles/* dist
+build-haskell:$(CONFIGURE)
 	cabal build
+
+js-dep: static/package.json static/config.js static/node_modules
 	cd static && \
 	npm install && \
-	jspm install -y && \
-	gulp build
+	jspm install -y
+	
+build: build-haskell js-dep static/src/* static/styles/* dist
+	cd static && gulp build
 
+bundle: build-haskell js-dep static/src/* static/styles/* dist
+	cd static && gulp bundle
+	
 test: $(CONFIGURE)
 	cabal test --show-details=streaming
 
-run: $(CONFIGURE) build
+run: $(CONFIGURE) js-dep
 	cd static && \
 	gulp watch &
 	./dist/build/site/site
@@ -53,7 +60,7 @@ clean:
 depclean:
 	rm -rf .cabal-sandbox cabal.sandbox.config dist
 
-docker: build
+docker: bundle
 	eval `docker-machine env machine` && \
 	docker build -t blog . && \
 	docker run --name blag -t -p 80:80 blog &

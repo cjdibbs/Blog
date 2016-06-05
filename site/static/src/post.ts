@@ -44,6 +44,6 @@ export class Post {
     
     @computedFrom('_title')
     get title() : string {
-        return this._title.replace("_", " ");
+        return this._title.replace(/_/g, " ");
     }
 }
