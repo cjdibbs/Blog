@@ -9,7 +9,7 @@ type tagDatum = { tag:string, count: number};
 @inject(HttpClient)
 export class App {
   router: Router;
-  posts: Post[];  
+  posts: Post[] = [];  
   client : HttpClient;
   tag: string;
   
@@ -44,9 +44,6 @@ export class App {
   
   @computedFrom('posts', 'tag')
   get filteredPosts(): Post[] {
-    if(!this.posts)
-      return [];
-    
     if(this.tag)
       return this.posts.filter(p => p.tags.indexOf(this.tag) >= 0);
     return this.posts;
