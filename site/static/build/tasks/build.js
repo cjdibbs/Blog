@@ -7,20 +7,19 @@ var sourcemaps = require('gulp-sourcemaps');
 var paths = require('../paths');
 var assign = Object.assign || require('object.assign');
 var notify = require('gulp-notify');
-var typescript = require('gulp-tsb');
+var typescript = require('gulp-typescript');
+var options = require('../../tsconfig.json').compilerOptions;
 
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
 // by errors from other gulp plugins
 // https://www.npmjs.com/package/gulp-plumber
-var typescriptCompiler = typescriptCompiler || null;
 gulp.task('build-system', function() {
-  if(!typescriptCompiler) {
-    typescriptCompiler = typescript.create(require('../../tsconfig.json').compilerOptions);
-  }
   return gulp.src(paths.dtsSrc.concat(paths.source))
     .pipe(plumber())
-    .pipe(typescriptCompiler())
+    .pipe(sourcemaps.init({loadMaps: false}))
+    .pipe(typescript(options))
+    .pipe(sourcemaps.write({includeContent: true, sourceRoot: '/src'}))
     .pipe(gulp.dest(paths.output));
 });
 

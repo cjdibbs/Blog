@@ -32,7 +32,7 @@ export class App {
   configureRouter(config: RouterConfiguration, router: Router) {
     config.title = "Dibbs's Musings";
     config.map([
-      { route: ['', 'Home'], name: 'posts', moduleId: 'posts', nav: true, title: 'Home' },
+      { route: ['', ':tag'], name: 'posts', moduleId: 'posts', nav: true, title: 'Home' },
       { route: ['post/:date/:title'], name: 'post', moduleId: 'view-post', nav: false, title: "change-me"}
     ]);
     
