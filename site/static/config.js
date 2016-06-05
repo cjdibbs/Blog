@@ -191,7 +191,8 @@ System.config({
     "app.js": [
       "aurelia-framework",
       "aurelia-fetch-client",
-      "post"
+      "post",
+      "fetch"
     ],
     "multi-observer.js": [
       "aurelia-framework"
@@ -200,7 +201,8 @@ System.config({
       "aurelia-framework"
     ],
     "post.js": [
-      "aurelia-framework"
+      "aurelia-framework",
+      "fetch"
     ],
     "posts.js": [
       "app",

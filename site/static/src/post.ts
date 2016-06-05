@@ -1,4 +1,5 @@
 import {computedFrom} from 'aurelia-framework';
+import 'fetch';
 import {HttpClient} from 'aurelia-fetch-client';
 
 export class Post {
