@@ -54,6 +54,14 @@ body {
     }
 }
 
+.tags {
+  .tag {
+    padding: 3px;
+    margin: 3px;
+    cursor: pointer;
+  }
+}
+
 pre {
   padding: 0;
   background: transparent;
@@ -63,7 +71,7 @@ pre {
 .post-summary {
   @include shadow();
   padding: 6px;
-  margin: 6px;
+  margin: 6px 6px 18px 6px;
   cursor: pointer;
 }
 
@@ -74,6 +82,13 @@ pre {
   .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
     background-color: lighten($brand-primary, 30%);
     border-color: lighten($brand-primary, 15%);
+  }
+}
+
+.tag-list {
+  display: none;
+  .active {
+    font-weight: bold;
   }
 }
 
@@ -102,6 +117,10 @@ pre {
     margin-left: 0;
   }	
 
+  .tag-list {
+    display: inherit;
+  }
+  
   .navbar-nav,
   .navbar-nav > li,
   .navbar-left,
