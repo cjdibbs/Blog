@@ -56,6 +56,12 @@ export class App {
     this.router = router;
   }
   
+  @computedFrom('filteredPosts')
+  get latestPosts(): Post[] {
+    return this.filteredPosts.map(p=>p).splice(0,3);
+  }
+  
+  
   @computedFrom('posts', 'tag')
   get filteredPosts(): Post[] {
     if(this.tag)
@@ -76,6 +82,6 @@ export class App {
         ret.push({'tag': tag, count:1});
     }));
     
-    return ret.sort((a,b) => a.count - b.count);
+    return ret.sort((a,b) => b.count - a.count);
   }
 }

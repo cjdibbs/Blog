@@ -59,6 +59,8 @@ body {
     padding: 3px;
     margin: 3px;
     cursor: pointer;
+    white-space: nowrap;
+    display: inline-block;
   }
 }
 
@@ -74,7 +76,11 @@ pre {
   margin: 6px 6px 18px 6px;
   cursor: pointer;
 }
-
+.post-body {
+  a {
+    white-space: normal;
+  }
+}
 .navbar-default {
   background-color: lighten($brand-primary, 40%);
   border-color: lighten($brand-primary, 25%);
