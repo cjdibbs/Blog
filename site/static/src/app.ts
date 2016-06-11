@@ -3,17 +3,20 @@ import 'fetch';
 import {HttpClient} from 'aurelia-fetch-client';
 import {Router, RouterConfiguration} from 'aurelia-router'
 import {Post} from 'post'
+import { EventAggregator } from 'aurelia-event-aggregator';
 
 type tagDatum = { tag:string, count: number};
+declare var ga : any;
 
-@inject(HttpClient)
+@inject(HttpClient, EventAggregator)
 export class App {
   router: Router;
   posts: Post[] = [];  
   client : HttpClient;
   tag: string;
+  eventAggregator: EventAggregator
   
-  constructor(client: HttpClient){
+  constructor(client: HttpClient, eventAggregator: EventAggregator){
     this.client = client.configure(config => {
       config.useStandardConfiguration()
     });
@@ -30,6 +33,17 @@ export class App {
                 return 0;
               });
         });
+        
+    this.eventAggregator = eventAggregator;
+    
+    this.eventAggregator.subscribe("router:navigation:complete", this.navigationComplete)
+  }
+  
+  navigationComplete(args: any) {
+    if(!window.location.host.match(/^(?:[0-9]{1,3}\.){3}[0-9]{1,3}/)) {
+      ga('set', 'page', args.instruction.fragment);
+      ga('send', 'pageview');
+    }
   }
 
   configureRouter(config: RouterConfiguration, router: Router) {

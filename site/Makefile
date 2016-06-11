@@ -72,4 +72,4 @@ clean-docker:
 
 update-aurelia:
 	cd static && \
-	npm install aurelia-animator-css aurelia-binding aurelia-bootstrapper aurelia-fetch-client aurelia-framework aurelia-history-browser aurelia-loader-default aurelia-logging-console aurelia-pal-browser aurelia-polyfills aurelia-router aurelia-templating aurelia-templating-binding aurelia-templating-resources aurelia-templating-router
+	npm install aurelia-animator-css aurelia-binding aurelia-bootstrapper aurelia-fetch-client aurelia-framework aurelia-history-browser aurelia-loader-default aurelia-logging-console aurelia-pal-browser aurelia-polyfills aurelia-router aurelia-templating aurelia-templating-binding aurelia-templating-resources aurelia-templating-router aurelia-event-aggregator
