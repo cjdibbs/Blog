@@ -5,6 +5,7 @@ import {BindingEngine} from 'aurelia-binding';
   
 declare var hljs : any;
 declare var jQuery : any;
+declare var DISQUS : any;
 
 @inject(App, BindingEngine)
 export class ViewPost {
@@ -12,7 +13,7 @@ export class ViewPost {
     post: Post;
     bindingEngine: BindingEngine;
     subscription: any;
-    
+
     constructor(app:App, bindingEngine:BindingEngine){
         this.app = app;
         this.bindingEngine = bindingEngine;
@@ -43,6 +44,8 @@ export class ViewPost {
     }
     
     updateBody(body: string){
+        var self = this;
+        
         var html = jQuery(body);
         
         var section = jQuery('section.post-body');

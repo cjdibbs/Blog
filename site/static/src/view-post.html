@@ -1,4 +1,5 @@
 <template>
+    <require from="disqus"></require> 
     <h3>${post.title}</h3>
     <div if.bind="post.tags" class="tags">
         <a class="tag" repeat.for="tag of post.tags" href-="#/${tag}" >${tag}</a>
@@ -6,5 +7,6 @@
     <p class="problem">${post.problem}</p>
     
     <section class="post-body"></section>
-        
+
+    <disqus post.bind="post"></disqus>
 </template>

@@ -1,12 +1,12 @@
-﻿import {inject} from 'aurelia-framework';
-import {ObserverLocator} from 'aurelia-framework'; // or 'aurelia-binding'
+﻿import {BindingEngine} from 'aurelia-binding';        // or from 'aurelia-framework'
+import {inject} from 'aurelia-framework';
 
-@inject(ObserverLocator)
-export class MultiObserver {  
-    observerLocator: ObserverLocator
+@inject(BindingEngine)
+export class MultiObserver {
+    bindingEngine : BindingEngine;
     
-    constructor(observerLocator: ObserverLocator) {
-        this.observerLocator = observerLocator;
+    constructor(bindingEngine) {
+        this.bindingEngine = bindingEngine;
     }
 
     observe(properties, callback) {
@@ -14,13 +14,15 @@ export class MultiObserver {
         while(i--) {
             object = properties[i][0];
             propertyName = properties[i][1];
-            subscriptions.push(this.observerLocator.getObserver(object, propertyName).subscribe(callback));
+            subscriptions.push(this.bindingEngine.propertyObserver(object, propertyName).subscribe(callback));
         }
 
         // return dispose function
-        return () => {
-            while(subscriptions.length) {
-                subscriptions.pop()();
+        return {
+            dispose: () => {
+                while(subscriptions.length) {
+                    subscriptions.pop().dispose();
+                }
             }
         }
     }
