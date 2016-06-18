@@ -1,1 +1,1 @@
-0 */4 * * * /bin/sh -c 'cd /opt/site/posts && /usr/bin/git pull -q origin master'
+I0 0,4,8,12,16,20 * * * /bin/sh -c 'cd /opt/site/posts && /usr/bin/git pull -q origin master'
