@@ -6,7 +6,7 @@ RUN cabal update
 # Add Cabal File and deps/ folder
 ADD ./site.cabal /opt/site/site.cabal
 RUN cd /opt/site && cabal install --only-dependencies
-RUN apt-get update && apt-get install -y git crontab cron
+RUN apt-get update && apt-get install -y git cron
 
 # Add our crontab file
 ADD config /config
