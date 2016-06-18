@@ -1,10 +1,10 @@
-﻿import {BindingEngine} from 'aurelia-binding';        // or from 'aurelia-framework'
+﻿import {BindingEngine} from 'aurelia-binding';
 import {inject} from 'aurelia-framework';
 
 @inject(BindingEngine)
 export class MultiObserver {
     bindingEngine : BindingEngine;
-    
+
     constructor(bindingEngine) {
         this.bindingEngine = bindingEngine;
     }

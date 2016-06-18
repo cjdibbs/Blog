@@ -12,7 +12,6 @@ export class Disqus  {
     subscription : Disposable;
 
     constructor(element : Element, bindingEngine : BindingEngine){
-
         this.element = element;
         this.bindingEngine = bindingEngine;
     }
