@@ -168,7 +168,12 @@ System.config({
       "aurelia-event-aggregator",
       "fetch"
     ],
+    "disqus.js": [
+      "post",
+      "aurelia-framework"
+    ],
     "multi-observer.js": [
+      "aurelia-binding",
       "aurelia-framework"
     ],
     "post-body.js": [
@@ -193,6 +198,8 @@ System.config({
     "app-build.js": [
       "app.html!github:systemjs/plugin-text@0.0.3.js",
       "app.js",
+      "disqus.html!github:systemjs/plugin-text@0.0.3.js",
+      "disqus.js",
       "main.js",
       "multi-observer.js",
       "nav-bar.html!github:systemjs/plugin-text@0.0.3.js",
