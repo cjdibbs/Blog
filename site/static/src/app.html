@@ -11,10 +11,11 @@
 
       <div class="col-md-3 head-nav">
         <nav-bar router.bind="router" posts.bind="latestPosts" tag.bind="tag"></nav-bar>
-        
         <div class="tag-list tags">
           <a class="tag ${datum.tag == tag ? 'active' : ''}" repeat.for="datum of tags" href-="#/${datum.tag}" >${datum.tag}</a>
         </div>
+        <a class="btn btn-default" style="border: none" href="https://github.com/cjdibbs"><i class="fa fa-2x fa-github"></i></a>
+        <a class="btn btn-default" style="border: none" href="https://www.linkedin.com/in/chris-dibbs-b225403"><i class="fa fa-2x fa-linkedin"></i></a>
       </div>
       <div class="col-md-9">
         <router-view></router-view>
