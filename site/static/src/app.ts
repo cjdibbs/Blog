@@ -20,19 +20,6 @@ export class App {
     this.client = client.configure(config => {
       config.useStandardConfiguration()
     });
-    
-    this.client.fetch('/posts')
-        .then(r => r.json())
-        .then(data => {
-          this.posts = data.map(datum => new Post(datum, this.client))
-              .sort((a:Post, b:Post) => {
-                if(a.date < b.date)
-                  return 1;
-                if(b.date < a.date)
-                  return -1;
-                return 0;
-              });
-        });
         
     this.eventAggregator = eventAggregator;
     
@@ -54,6 +41,19 @@ export class App {
     ]);
     
     this.router = router;
+
+    return this.client.fetch('/posts')
+        .then(r => r.json())
+        .then(data => {
+          this.posts = data.map(datum => new Post(datum, this.client))
+              .sort((a:Post, b:Post) => {
+                if(a.date < b.date)
+                  return 1;
+                if(b.date < a.date)
+                  return -1;
+                return 0;
+              });
+        });
   }
   
   @computedFrom('filteredPosts')
