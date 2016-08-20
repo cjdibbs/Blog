@@ -20,7 +20,7 @@
           </li>
           
           <li class="post-link" repeat.for="post of posts">
-            <a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in" href="#post/${post.date}/${post.title}">${post.title}</a>
+            <a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in" href="#!post/${post.date}/${post.title}">${post.title}</a>
           </li>
           
           <li if.bind="tag">

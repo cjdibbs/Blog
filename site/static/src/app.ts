@@ -37,7 +37,7 @@ export class App {
     config.title = "Dibbs's Musings";
     config.map([
       { route: ['', ':tag'], name: 'posts', moduleId: 'posts', nav: false, title: 'Home' },
-      { route: ['post/:date/:title'], name: 'post', moduleId: 'view-post', nav: false, title: "change-me"}
+      { route: ['post/:date/:title', '!post/:date/:title'], name: 'post', moduleId: 'view-post', nav: false, title: "change-me"}
     ]);
     
     this.router = router;
