@@ -69,4 +69,4 @@ siteMap = do
           athority r = LBS.concat ["http://", LBS.fromStrict $ rqServerName r, "/" ]
         
 toUrl :: Summary -> T.Text
-toUrl s = T.concat ["#!post/", fromJust $ date s, "/", fromJust $ title s]
+toUrl s = T.concat ["?post/", fromJust $ date s, "/", fromJust $ title s]
