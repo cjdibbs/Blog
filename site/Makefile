@@ -31,7 +31,7 @@ configure: $(CONFIGURE)
 build-haskell:$(CONFIGURE)
 	cabal build
 
-js-dep: static/package.json static/config.js static/node_modules
+js-dep: static/package.json static/config.js 
 	cd static && \
 	npm install && \
 	jspm install -y
@@ -45,7 +45,7 @@ bundle: build-haskell js-dep static/src/* static/styles/* dist
 test: $(CONFIGURE)
 	cabal test --show-details=streaming
 
-run: $(CONFIGURE) js-dep
+run: $(CONFIGURE) js-dep build-haskell
 	cd static && \
 	gulp watch &
 	./dist/build/site/site
@@ -56,6 +56,7 @@ doc: $(CONFIGURE)
 clean:
 	rm -rf dist
 	rm -rf static/dist
+	rm -rf static/node_modules
 
 depclean:
 	rm -rf .cabal-sandbox cabal.sandbox.config dist
