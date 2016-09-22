@@ -21,7 +21,7 @@ export class ViewPost {
     
     activate(params : { date: string, title: string }, routeConfig) : void {
         this.post = this.app.posts.find(p => p.date === params.date && (p.title == params.title || p._title == params.title));
-        routeConfig.navModel.setTitle(params.title);
+        routeConfig.navModel.setTitle(this.post.title);
         
         this.subscription = this.bindingEngine
             .propertyObserver(this.post, 'body')
